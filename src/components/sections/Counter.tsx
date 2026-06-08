@@ -36,7 +36,7 @@ export function CounterSection() {
   ];
 
   return (
-    <section id="contagem" className="min-h-screen flex items-center justify-center px-6 py-24">
+    <section id="contagem" className="min-h-screen flex items-center justify-center px-6 py-16">
       <div className="max-w-4xl w-full text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

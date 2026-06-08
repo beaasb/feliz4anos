@@ -10,7 +10,7 @@ const events = [
 
 export function TimelineSection() {
   return (
-    <section id="linha-do-tempo" className="min-h-screen px-6 py-24">
+    <section id="linha-do-tempo" className="px-6 py-16 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <motion.p

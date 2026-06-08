@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export function LetterSection() {
   return (
-    <section id="carta" className="min-h-screen flex items-center justify-center px-6 py-24">
+    <section id="carta" className="flex items-center justify-center px-6 py-16">
       <div className="max-w-2xl w-full">
         <motion.p
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
