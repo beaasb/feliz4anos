@@ -11,7 +11,7 @@ const moments = [
 
 export function MomentsSection() {
   return (
-    <section id="momentos" className="min-h-screen px-6 py-24 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent">
+    <section id="momentos" className="px-6 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <motion.p

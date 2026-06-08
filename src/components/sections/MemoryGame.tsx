@@ -67,7 +67,7 @@ export function MemoryGameSection() {
   };
 
   return (
-    <section id="jogo" className="min-h-screen px-6 py-24 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent">
+    <section id="jogo" className="px-6 py-16">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <motion.p
