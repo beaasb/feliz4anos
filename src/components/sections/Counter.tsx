@@ -48,15 +48,9 @@ export function CounterSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           className="text-5xl md:text-7xl mb-3"
         >
-          estamos juntos há
+          estamos juntas há
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          className="text-muted-foreground mb-12 italic"
-        >
-          {d.years} {d.years === 1 ? "ano" : "anos"} e {d.months} {d.months === 1 ? "mês" : "meses"} de nós
-        </motion.p>
-
+        
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
             <motion.div
@@ -74,13 +68,23 @@ export function CounterSection() {
             </motion.div>
           ))}
         </div>
+        <div className="max-w-4xl w-full text-center">
+        <motion.p
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+          className="text-muted-foreground mb-2 mt-8 italic"
+        >
+          {d.years} {d.years === 1 ? "ano" : "anos"} e {d.months} {d.months === 1 ? "mês" : "meses"} de nós
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-          className="mt-12 text-2xl heart-pulse inline-block"
+          className="text-2xl heart-pulse inline-block"
         >
           ♥
         </motion.div>
+
+        </div>     
+        
       </div>
     </section>
   );

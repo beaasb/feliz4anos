@@ -19,7 +19,7 @@ export function SongSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           className="text-4xl md:text-6xl mb-3"
         >
-          toca pra você lembrar de mim
+          toca pra você lembrar de nós
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
@@ -50,7 +50,7 @@ export function SongSection() {
       <div className="max-w-4xl mx-auto mt-16 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="font-script text-2xl text-primary mb-2"
+          className="font-script text-3xl text-primary mb-2"
         >
           bônus
         </motion.p>

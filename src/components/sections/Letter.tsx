@@ -8,7 +8,7 @@ export function LetterSection() {
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="font-script text-3xl text-primary mb-4 text-center"
         >
-          uma carta para você
+          uma cartinha para você
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
@@ -37,7 +37,7 @@ export function LetterSection() {
               espaço pronto pra você preencher quando estiver pronto. Substitua este texto
               em <code className="font-body text-xs bg-muted/60 px-1.5 py-0.5 rounded">src/components/sections/Letter.tsx</code>.]
             </p>
-            <p className="text-right pt-4">com todo o meu amor,<br />sempre seu ♥</p>
+            <p className="text-right pt-4">com todo o meu amor,<br />sua nega ♥</p>
           </div>
         </motion.article>
       </div>
