@@ -25,6 +25,11 @@ const STORAGE_KEY = "pv_unlocked_v1";
 
 function Index() {
   const [unlocked, setUnlocked] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && sessionStorage.getItem(STORAGE_KEY) === "1") {
@@ -37,12 +42,45 @@ function Index() {
     setUnlocked(true);
   };
 
-  if (!unlocked) return <PasswordGate onUnlock={handleUnlock} />;
+  if (!unlocked)
+    return (
+      <PasswordGate
+        onUnlock={handleUnlock}
+        darkMode={darkMode}
+        toggleDarkMode={() => setDarkMode(!darkMode)}
+      />
+    );
 
   return (
     <div className="relative overflow-x-hidden">
-      <Petals />
-      <Nav />
+      <Petals darkMode={darkMode} />
+      <div className="sticky top-0 z-50">
+      <Nav
+         darkMode={darkMode}
+         toggleDarkMode={() => setDarkMode(!darkMode)}
+      />
+
+      <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="
+              fixed
+              top-3
+              right-5
+              z-[9999]
+              rounded-full
+              px-4
+              py-2
+              dark:text-yellow-900
+              bg-white/80
+              backdrop-blur
+              shadow-lg
+              hover:scale-105
+              transition
+            "
+          >
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+        </div>
       <main className="relative z-10">
         <CounterSection />
         <SongSection />

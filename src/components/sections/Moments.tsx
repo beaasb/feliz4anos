@@ -2,17 +2,80 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import outback from "@/assets/moments/outback.JPG";
+import passeio from "@/assets/moments/passeio.JPG";
+import morango from "@/assets/moments/morango.MP4";
+import piscina from "@/assets/moments/piscina.JPG";
+import teatro from "@/assets/moments/teatro.JPG";
+import shopping from "@/assets/moments/shopping.MP4";
+import madrinhas from "@/assets/moments/madrinhas.JPG";
+import cataratas from "@/assets/moments/cataratas.JPG";
+import show from "@/assets/moments/show.MOV";
+import buque from "@/assets/moments/buque.JPG";
+import astra from "@/assets/moments/astra.JPG";
+import pipoca from "@/assets/moments/pipoca.MOV";
+
 const moments = [
-  { caption: "nosso primeiro encontro", emoji: "☕", tone: "from-[oklch(0.88_0.08_25)] to-[oklch(0.78_0.1_20)]" },
-  { caption: "aquela viagem", emoji: "🌊", tone: "from-[oklch(0.85_0.07_220)] to-[oklch(0.75_0.1_230)]" },
-  { caption: "do nada, num domingo", emoji: "🌷", tone: "from-[oklch(0.9_0.07_350)] to-[oklch(0.8_0.1_340)]" },
-  { caption: "aniversário", emoji: "🎂", tone: "from-[oklch(0.9_0.06_60)] to-[oklch(0.8_0.1_50)]" },
-  { caption: "rindo de besteira", emoji: "✨", tone: "from-[oklch(0.92_0.05_90)] to-[oklch(0.82_0.08_80)]" },
-  { caption: "abraço apertado", emoji: "💕", tone: "from-[oklch(0.80_0.08_15)] to-[oklch(0.78_0.12_10)]" },
-  { caption: "nossa música", emoji: "🎵", tone: "from-[oklch(0.87_0.08_290)] to-[oklch(0.77_0.12_280)]" },
-  { caption: "assistindo filme juntos", emoji: "🎬", tone: "from-[oklch(0.86_0.07_250)] to-[oklch(0.74_0.10_240)]" },
-  { caption: "mensagem inesperada", emoji: "💌", tone: "from-[oklch(0.91_0.08_10)] to-[oklch(0.82_0.12_5)]" },
-  { caption: "planos para o futuro", emoji: "🏡", tone: "from-[oklch(0.90_0.06_140)] to-[oklch(0.80_0.09_130)]" },  
+  {
+    caption: "pedido no outback",
+    type: "image",
+    src: outback,
+  },
+  {
+    caption: "passeio no parque da cidade",
+    type: "image",
+    src: passeio,
+  },
+  {
+    caption: "festa do morango",
+    type: "video",
+    src: morango,
+  },
+  {
+    caption: "piscininha 🌞",
+    type: "image",
+    src: piscina,
+  },
+  {
+    caption: "show de luzes ",
+    type: "image",
+    src: teatro,
+  },
+  {
+    caption: "rolê no shops",
+    type: "video",
+    src: shopping,
+  },
+  {
+    caption: "madrinhas ✨",
+    type: "image",
+    src: madrinhas,
+  },
+  {
+    caption: "viagem para as cataratas",
+    type: "image",
+    src: cataratas,
+  },
+  {
+    caption: "showzin do Luan",
+    type: "video",
+    src: show,
+  },
+  {
+    caption: "sempre com buquêzinho",
+    type: "image",
+    src: buque,
+  },
+  {
+    caption: "rolêzin de astra",
+    type: "image",
+    src: astra,
+  },
+  {
+    caption: "preparativos para a tarde de preguiça",
+    type: "video",
+    src: pipoca,
+  },
 ];
 
 export function MomentsSection() {
@@ -29,7 +92,7 @@ export function MomentsSection() {
     );
   };
   return (
-    <section id="momentos" className="px-6 py-16">
+    <section id="momentos" className="scroll-mt-8 px-6 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <motion.p
@@ -48,11 +111,11 @@ export function MomentsSection() {
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
             className="text-muted-foreground italic mt-3"
           >
-            substitua os cards abaixo pelas nossas fotos e vídeos favoritos
+            nossas fotos e vídeos favoritos ♥
           </motion.p>
         </div>
 
-        <div className="relative h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="relative h-[620px] md:h-[720px] flex items-center justify-center overflow-hidden">
 
         <button
           onClick={prev}
@@ -118,8 +181,9 @@ export function MomentsSection() {
               }}
               className="
                 absolute
-                w-[260px]
-                md:w-[340px]
+                w-[320px]
+                sm:w-[320px]
+                md:w-[420px]
                 aspect-[4/5]
                 rounded-2xl
                 overflow-hidden
@@ -129,14 +193,42 @@ export function MomentsSection() {
                 group
               "
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${m.tone}`}
+              
+            {m.type === "video" ? (
+              <video
+                src={m.src}
+                className="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                  transition-transform
+                  duration-500
+                  group-hover:scale-110
+                "
+                autoPlay
+                muted
+                loop
+                playsInline
               />
-
-              <div className="absolute inset-0 flex items-center justify-center text-6xl md:text-7xl opacity-80 transition-transform duration-500 group-hover:scale-110">
-                {m.emoji}
-              </div>
-
+            ) : (
+              <img
+                src={m.src}
+                alt={m.caption}
+                className="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                  transition-transform
+                  duration-500
+                  group-hover:scale-110
+                "
+              />
+            )}
+              
               <figcaption className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
                 <p className="font-script text-xl md:text-2xl text-white drop-shadow">
                   {m.caption}
@@ -146,10 +238,6 @@ export function MomentsSection() {
           );
         })}
       </div>
-
-        <p className="text-center text-xs text-muted-foreground/70 mt-8 italic">
-          dica: troque cada card por uma &lt;img&gt; ou &lt;video&gt; em src/components/sections/Moments.tsx
-        </p>
       </div>
     </section>
   );

@@ -110,3 +110,39 @@
   10% { opacity: 0.8; }
   100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
+
+.dark {
+  --background: oklch(0.18 0.03 260);
+  
+  --foreground: oklch(0.99 0.01 60);
+
+  --card: oklch(0.96 0.01 60);
+  --card-foreground: oklch(0.25 0.01 60);
+
+  --popover: oklch(0.24 0.03 260);
+  --popover-foreground: oklch(0.96 0.01 60);
+
+  --muted: oklch(0.28 0.03 260);
+  --muted-foreground: oklch(0.60 0.02 260);
+
+  --border: oklch(0.35 0.02 260);
+  --input: oklch(0.30 0.03 260);
+
+  --primary: oklch(69.76% 0.18837 22.582);
+  --primary-foreground: oklch(0.98 0.01 60);
+
+  --shadow-soft: 0 10px 40px -10px oklch(0.70 0.03 260 / 0.25);
+  --shadow-card: 0 4px 24px -6px oklch(0.80 0.03 260 / 0.15);
+}
+
+html.dark body {
+  background-color: oklch(0.16 0.03 260);
+
+  background-image:
+      radial-gradient(at 20% 10%, oklch(0.16 0.03 260) 0px, transparent 0%),
+      radial-gradient(at 80% 90%, oklch(0.16 0.03 260) 0px, transparent 0%);
+    background-attachment: fixed;
+
+  color: var(--foreground);
+}
+

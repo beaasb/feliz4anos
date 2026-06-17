@@ -3,15 +3,18 @@ import { motion } from "motion/react";
 const bonus = [
   "07g6lmHFSud1Suf2BvMdKb",
   "7BWj4bLH3ppKNGH9rncZWT",
+  "6ccKu0LwJzOhLAxBwP2PTk",
+  "6xoSSWX6jIeLYyhEIR2nyZ",
+  
 ];
 
 export function SongSection() {
   return (
-    <section id="musica" className="px-6 py-16 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent">
+    <section id="musica" className="scroll-mt-8  px-6 py-16 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent dark:via-transparent">
       <div className="max-w-2xl w-full text-center mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="font-script text-3xl text-primary mb-4"
+          className="font-script text-3xl text-primary "
         >
           a nossa música
         </motion.p>
@@ -87,3 +90,4 @@ export function SongSection() {
     </section>
   );
 }
+

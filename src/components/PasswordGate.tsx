@@ -3,7 +3,17 @@ import { motion } from "motion/react";
 
 const PASSWORD = "190622";
 
-export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
+type PasswordGateProps = {
+  onUnlock: () => void;
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+};
+
+export function PasswordGate({
+  onUnlock,
+  darkMode,
+  toggleDarkMode,
+}: PasswordGateProps) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
   const [shake, setShake] = useState(0);
@@ -20,7 +30,29 @@ export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6 relative">
+      
+      <button
+        onClick={toggleDarkMode}
+        className="
+          fixed
+          top-3
+          right-5
+          z-[9999]
+          rounded-full
+          px-4
+          py-2
+          dark:text-yellow-900
+          bg-white/80
+          backdrop-blur
+          shadow-lg
+          hover:scale-105
+          transition
+        "
+      >
+        {darkMode ? "☀️" : "🌙"}
+      </button>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full text-center"
@@ -35,7 +67,7 @@ export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
           onSubmit={submit}
           animate={error ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
           transition={{ duration: 0.4 }}
-          className="space-y-4"
+          className="space-y-4 text-black"
         >
           <input
             type="password"
@@ -61,7 +93,7 @@ export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
         </motion.form>
 
         <p className="text-xs text-muted-foreground/60 mt-10 italic">
-          dica: é uma data muito especial pra nós dois
+          dica: é uma data muito especial pra nós duas
         </p>
       </motion.div>
     </div>

@@ -1,26 +1,32 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 
-export function Petals() {
-  const petals = useMemo(
-    () =>
-      Array.from({ length: 14 }).map((_, i) => ({
-        id: i,
-        left: Math.random() * 100,
-        duration: 12 + Math.random() * 14,
-        delay: Math.random() * 10,
-        size: 12 + Math.random() * 18,
-        emoji: ["🌸", "🌷", "♥", "✿"][i % 4],
-        opacity: 0.4 + Math.random() * 0.4,
-      })),
-    [],
-  );
+type PetalsProps = {
+  darkMode: boolean;
+};
+
+export function Petals({ darkMode }: PetalsProps) {
+  const petals = useMemo(() => {
+    const emojis = darkMode
+      ? ["⭐", "✨", "🌙", "💖", "❤️"]
+      : ["🌸", "🌷", "♥", "✿"];
+
+    return Array.from({ length: 14 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      duration: 12 + Math.random() * 14,
+      delay: Math.random() * 1,
+      size: 12 + Math.random() * 18,
+      emoji: emojis[Math.floor(Math.random() * emojis.length)],
+      opacity: 0.4 + Math.random() * 0.4,
+    }));
+  }, [darkMode]);
 
   return (
     <>
       {petals.map((p) => (
         <span
-          key={p.id}
+          key={`${darkMode}-${p.id}`}
           className="fall-petal"
           style={{
             left: `${p.left}%`,
@@ -46,7 +52,12 @@ const links = [
   { href: "#jogo", label: "jogo" },
 ];
 
-export function Nav() {
+type NavProps = {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+};
+
+export function Nav({ darkMode, toggleDarkMode }: NavProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,22 +74,35 @@ export function Nav() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="
+            md:hidden
+            mr-4
+            w-11
+            h-11
+            rounded-full
+            bg-card/80
+            backdrop-blur-md
+            border
+            border-border
+            flex
+            items-center
+            justify-center
+            text-xl
+          "
+        >
+          {open ? "✕" : "☰"}
+        </button>
         <a href="#contagem" className="font-script text-2xl text-primary">para você ♥</a>
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex ml-auto items-center gap-7">          
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
               {l.label}
             </a>
           ))}
         </nav>
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="md:hidden text-sm px-3 py-2 rounded-full border border-border bg-card/80"
-          aria-label="menu"
-        >
-          {open ? "fechar" : "menu"}
-        </button>
       </div>
       {open && (
         <nav className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50 px-6 py-4 flex flex-col gap-3">
