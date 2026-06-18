@@ -2,10 +2,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
 const photos = [
-  { emoji: "💋", tone: "from-[oklch(0.88_0.08_15)] to-[oklch(0.78_0.12_10)]", rotate: -8, top: "-4%", right: "55%" },
-  { emoji: "🥰", tone: "from-[oklch(0.9_0.07_350)] to-[oklch(0.8_0.1_340)]", rotate: 4, top: "32%", right: "20%" },
-  { emoji: "💞", tone: "from-[oklch(0.88_0.08_25)] to-[oklch(0.78_0.1_20)]", rotate: 10, top: "70%", right: "-8%" },
+  { emoji: "💋", tone: "from-[oklch(0.88_0.08_15)] to-[oklch(0.78_0.12_10)]" },
+  { emoji: "🥰", tone: "from-[oklch(0.9_0.07_350)] to-[oklch(0.8_0.1_340)]" },
+  { emoji: "💞", tone: "from-[oklch(0.88_0.08_25)] to-[oklch(0.78_0.1_20)]" },
 ];
+
 
 export function LetterSection() {
   const [open, setOpen] = useState(false);
