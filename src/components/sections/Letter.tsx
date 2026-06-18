@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
-import foto1 from "@/assets/letter/foto1.jpg";
+import foto1 from "@/assets/letter/foto1.JPG";
 import foto2 from "@/assets/letter/foto2.jpg";
-import foto3 from "@/assets/letter/foto3.jpg";
+import foto3 from "@/assets/letter/foto3.JPG";
 
 export function LetterSection() {
   const [open, setOpen] = useState(false);
