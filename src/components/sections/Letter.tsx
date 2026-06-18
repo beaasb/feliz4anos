@@ -26,87 +26,79 @@ export function LetterSection() {
           tudo que eu queria te dizer
         </motion.h2>
 
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center justify-items-center">
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-start justify-items-center">
           {/* Envelope + carta */}
           <div className="relative w-full max-w-xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="relative mx-auto"
-              style={{ perspective: "1200px" }}
+              style={{ perspective: "1400px" }}
             >
-              <div className="relative w-full aspect-[3/2] mx-auto">
-                {/* Corpo do envelope (sempre visível) */}
+              {/* ENVELOPE */}
+              <div className="relative w-full aspect-[3/2] mx-auto z-10">
+                {/* corpo do envelope (cor sólida) */}
                 <div
-                  className="absolute inset-0 rounded-md shadow-[var(--shadow-card)] overflow-hidden z-10"
-                  style={{ background: "linear-gradient(135deg, oklch(0.92 0.05 25), oklch(0.85 0.08 20))" }}
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, oklch(0.88 0.06 22) 50%, transparent 50%), linear-gradient(-135deg, oklch(0.88 0.06 22) 50%, transparent 50%)",
-                      backgroundSize: "50% 100%",
-                      backgroundPosition: "left, right",
-                      backgroundRepeat: "no-repeat",
-                      opacity: 0.5,
-                    }}
-                  />
-                </div>
+                  className="absolute inset-0 rounded-md shadow-[var(--shadow-card)]"
+                  style={{ background: "linear-gradient(160deg, oklch(0.9 0.07 22), oklch(0.82 0.1 18))" }}
+                />
 
-                {/* Aba superior — abre quando open */}
-                <motion.div
-                  className="absolute top-0 left-0 right-0 h-1/2 z-30"
+                {/* bolso frontal — V apontando pra cima no meio */}
+                <div
+                  className="absolute inset-0 rounded-md"
                   style={{
-                    background: "linear-gradient(180deg, oklch(0.82 0.09 18), oklch(0.78 0.1 18))",
-                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-                    transformOrigin: "top",
-                    transformStyle: "preserve-3d",
-                    backfaceVisibility: "hidden",
+                    background: "linear-gradient(180deg, oklch(0.88 0.08 22), oklch(0.8 0.11 18))",
+                    clipPath: "polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%)",
+                    boxShadow: "inset 0 2px 8px oklch(0.4 0.08 25 / 0.18)",
                   }}
-                  animate={{ rotateX: open ? -175 : 0 }}
+                />
+
+                {/* aba superior — triângulo apontando pra baixo, gira ao abrir */}
+                <motion.div
+                  className="absolute top-0 left-0 right-0 h-[55%] origin-top"
+                  style={{
+                    background: "linear-gradient(180deg, oklch(0.86 0.09 20), oklch(0.78 0.11 18))",
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                    transformStyle: "preserve-3d",
+                    filter: open ? "none" : "drop-shadow(0 4px 6px oklch(0.4 0.08 25 / 0.25))",
+                    zIndex: open ? 5 : 40,
+                  }}
+                  animate={{ rotateX: open ? -178 : 0 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 />
 
-                {/* Selo de coração (só fechado) */}
+                {/* selo de coração */}
                 <AnimatePresence>
                   {!open && (
                     <motion.div
                       initial={{ opacity: 1 }}
                       exit={{ opacity: 0, scale: 0.4 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground text-xl shadow-[var(--shadow-soft)] heart-pulse z-40"
+                      transition={{ duration: 0.25 }}
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground text-xl shadow-[var(--shadow-soft)] heart-pulse z-50"
                     >
                       ♥
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </div>
 
-                {/* Carta saindo de dentro */}
+              {/* CARTA — sai DE BAIXO do envelope, descendo */}
+              <motion.div
+                className="overflow-hidden relative z-0"
+                initial={false}
+                animate={{ height: open ? "auto" : 0 }}
+                transition={{ duration: 0.6, delay: open ? 0.5 : 0.3, ease: "easeInOut" }}
+              >
                 <motion.article
-                  className="absolute left-1/2 -translate-x-1/2 w-[88%] bg-card rounded-md border border-border/60 shadow-[var(--shadow-card)] z-20 overflow-hidden"
+                  className="mt-[-8%] mx-auto w-[92%] bg-card rounded-b-md border border-border/60 border-t-0 shadow-[var(--shadow-card)] p-6 md:p-8"
                   style={{
                     backgroundImage:
-                      "repeating-linear-gradient(transparent, transparent 23px, oklch(0.9 0.02 40 / 0.4) 24px)",
-                    top: "20%",
-                    transformOrigin: "bottom center",
+                      "repeating-linear-gradient(transparent, transparent 27px, oklch(0.9 0.02 40 / 0.4) 28px)",
                   }}
                   initial={false}
-                  animate={
-                    open
-                      ? { y: "-78%", height: "auto", paddingTop: 28, paddingBottom: 24 }
-                      : { y: "0%", height: "60%", paddingTop: 16, paddingBottom: 16 }
-                  }
-                  transition={{
-                    y: { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: open ? 0.45 : 0 },
-                    height: { duration: 0.5, delay: open ? 1.3 : 0 },
-                  }}
+                  animate={{ y: open ? 0 : -80, opacity: open ? 1 : 0 }}
+                  transition={{ duration: 0.8, delay: open ? 0.7 : 0, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <motion.div
-                    initial={false}
-                    animate={{ opacity: open ? 1 : 0 }}
-                    transition={{ duration: 0.4, delay: open ? 1.5 : 0 }}
-                    className="px-6 md:px-8 font-script text-xl md:text-2xl leading-[1.7rem] md:leading-[2rem] text-foreground/85 space-y-4"
-                  >
+                  <div className="font-script text-xl md:text-2xl leading-[1.8rem] md:leading-[2.1rem] text-foreground/85 space-y-4 pt-6">
                     <p>Meu amor,</p>
                     <p>
                       [Escreva aqui a sua carta. Conte como tudo começou, o que ela
@@ -121,19 +113,9 @@ export function LetterSection() {
                       .]
                     </p>
                     <p className="text-right pt-2">com todo o meu amor,<br />sempre seu ♥</p>
-                  </motion.div>
+                  </div>
                 </motion.article>
-
-                {/* Bolso frontal do envelope (na frente da carta) */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-1/2 z-30 rounded-b-md"
-                  style={{
-                    background: "linear-gradient(180deg, oklch(0.88 0.07 22), oklch(0.84 0.09 20))",
-                    clipPath: "polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%)",
-                    boxShadow: "inset 0 8px 16px -8px oklch(0.4 0.08 25 / 0.25)",
-                  }}
-                />
-              </div>
+              </motion.div>
 
               <button
                 onClick={() => setOpen(!open)}
@@ -143,6 +125,7 @@ export function LetterSection() {
               </button>
             </motion.div>
           </div>
+
 
           {/* Tirinha de fotos estilo cabine */}
           <motion.div
