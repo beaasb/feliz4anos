@@ -125,27 +125,30 @@ export function LetterSection() {
               </motion.article>
             </motion.div>
 
-            {/* FOTOS — em diagonal sobre envelope/carta, sempre por cima */}
-            <div className="absolute inset-0 pointer-events-none z-40">
-              {photos.map((p, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: -20, rotate: p.rotate - 6 }}
-                  whileInView={{ opacity: 1, y: 0, rotate: p.rotate }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.12, type: "spring", stiffness: 120, damping: 14 }}
-                  whileHover={{ scale: 1.06, rotate: p.rotate + 2, zIndex: 50 }}
-                  className="absolute bg-white p-2 pb-6 shadow-[var(--shadow-card)] rounded-sm pointer-events-auto"
-                  style={{ top: p.top, right: p.right }}
-                >
+            {/* TIRINHA DE FOTOS (cabine) — sempre por cima */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: -10, rotate: 8 }}
+              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 5 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 120, damping: 14 }}
+              whileHover={{ rotate: 2, scale: 1.03 }}
+              className="absolute top-[-4%] right-[-4%] md:right-[-10%] z-40 bg-white p-3 pb-10 shadow-[var(--shadow-card)] rounded-sm"
+            >
+              <div className="flex flex-col gap-2">
+                {photos.map((p, i) => (
                   <div
-                    className={`w-28 md:w-32 aspect-square bg-gradient-to-br ${p.tone} flex items-center justify-center text-4xl`}
+                    key={i}
+                    className={`w-24 md:w-28 aspect-square bg-gradient-to-br ${p.tone} flex items-center justify-center text-3xl`}
                   >
                     {p.emoji}
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                ))}
+              </div>
+              <p className="absolute bottom-2 left-0 right-0 text-center font-script text-base text-foreground/60">
+                nós ♥
+              </p>
+            </motion.div>
+
           </div>
 
           <button
