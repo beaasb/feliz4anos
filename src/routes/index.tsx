@@ -89,7 +89,7 @@ function Index() {
         <TimelineSection />
         <MemoryGameSection />
         <footer className="text-center py-10 text-sm text-muted-foreground italic">
-          feito com ♥ — 19.06.2022 → para sempre
+          feito com muuuuuito amor ♥ — 19.06.2022 → para sempre
         </footer>
       </main>
     </div>
