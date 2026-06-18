@@ -1,33 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 
-import jogo from "@/assets/memorygame/jogo.jpg";
-import jogo1 from "@/assets/memorygame/jogo1.jpg";
-import jogo2 from "@/assets/memorygame/jogo2.JPG";
-import jogo3 from "@/assets/memorygame/jogo3.JPG";
-import jogo4 from "@/assets/memorygame/jogo4.JPG";
-import jogo5 from "@/assets/memorygame/jogo5.JPG";
-import jogo6 from "@/assets/memorygame/jogo6.JPG";
-import jogo7 from "@/assets/memorygame/jogo7.JPG";
-
-console.log(jogo);
-console.log(jogo1);
-
-type Card = {
-  id: number;
-  pairId: number;
-  image: string;
-};
+type Card = { id: number; pairId: number; emoji: string; tone: string };
 
 const pairs = [
-  { image: jogo },
-  { image: jogo1 },
-  { image: jogo2 },
-  { image: jogo3 },
-  { image: jogo4 },
-  { image: jogo5 },
-  { image: jogo6 },
-  { image: jogo7 },
+  { emoji: "🌷", tone: "from-[oklch(0.9_0.07_350)] to-[oklch(0.8_0.1_340)]" },
+  { emoji: "☕", tone: "from-[oklch(0.88_0.08_25)] to-[oklch(0.78_0.1_20)]" },
+  { emoji: "🌊", tone: "from-[oklch(0.85_0.07_220)] to-[oklch(0.75_0.1_230)]" },
+  { emoji: "🎂", tone: "from-[oklch(0.9_0.06_60)] to-[oklch(0.8_0.1_50)]" },
+  { emoji: "✨", tone: "from-[oklch(0.92_0.05_90)] to-[oklch(0.82_0.08_80)]" },
+  { emoji: "💕", tone: "from-[oklch(0.88_0.08_15)] to-[oklch(0.78_0.12_10)]" },
 ];
 
 function shuffle<T>(arr: T[]): T[] {
@@ -42,16 +24,8 @@ function shuffle<T>(arr: T[]): T[] {
 function makeDeck(): Card[] {
   const deck: Card[] = [];
   pairs.forEach((p, idx) => {
-    deck.push({
-    id: idx * 2,
-    pairId: idx,
-    image: p.image,
-  });
-  deck.push({
-    id: idx * 2 + 1,
-    pairId: idx,
-    image: p.image,
-  });
+    deck.push({ id: idx * 2, pairId: idx, emoji: p.emoji, tone: p.tone });
+    deck.push({ id: idx * 2 + 1, pairId: idx, emoji: p.emoji, tone: p.tone });
   });
   return shuffle(deck);
 }
@@ -93,7 +67,7 @@ export function MemoryGameSection() {
   };
 
   return (
-    <section id="jogo" className="scroll-mt-8 px-6 py-16">
+    <section id="jogo" className="min-h-screen px-6 py-24 bg-gradient-to-b from-transparent via-[oklch(0.94_0.03_30)]/40 to-transparent">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <motion.p
@@ -108,14 +82,14 @@ export function MemoryGameSection() {
           >
             jogo da memória
           </motion.h2>
-          <p className="text-muted-foreground italic">encontre as fotos pares ♥</p>
+          <p className="text-muted-foreground italic">encontre os pares — assim como a gente</p>
         </div>
 
         <div className="flex items-center justify-between mb-6 px-1">
           <p className="text-sm text-muted-foreground">jogadas: <span className="font-medium text-foreground tabular-nums">{moves}</span></p>
           <button
             onClick={reset}
-            className="text-sm px-4 py-2 dark:text-red-900 rounded-full border border-border bg-card hover:bg-accent transition-colors"
+            className="text-sm px-4 py-2 rounded-full border border-border bg-card hover:bg-accent transition-colors"
           >
             reiniciar
           </button>
@@ -139,21 +113,9 @@ export function MemoryGameSection() {
                     ♥
                   </div>
                   <div
-                    className={`
-                      absolute inset-0
-                      rounded-2xl
-                      overflow-hidden
-                      shadow-[var(--shadow-card)]
-                      [backface-visibility:hidden]
-                      [transform:rotateY(180deg)]
-                      ${matched.includes(c.id) ? "ring-2 ring-primary/60" : ""}
-                    `}
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${c.tone} shadow-[var(--shadow-card)] flex items-center justify-center text-5xl md:text-6xl [backface-visibility:hidden] [transform:rotateY(180deg)] ${matched.includes(c.id) ? "ring-2 ring-primary/60" : ""}`}
                   >
-                    <img
-                      src={c.image}
-                      alt="memória"
-                      className="w-full h-full object-cover"
-                    />
+                    {c.emoji}
                   </div>
                 </div>
               </button>
