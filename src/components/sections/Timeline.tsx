@@ -3,14 +3,14 @@ import { motion } from "motion/react";
 import pedido from "@/assets/timeline/pedidoJu.JPG";
 import viagem from "@/assets/timeline/viagem.JPG";
 import namo from "@/assets/timeline/diadosnamo.jpg";
-import aliança from "@/assets/timeline/alianca.jpg";
-import bobo from "@/assets/timeline/bobo.jpg";
+import aliança from "@/assets/timeline/alianca.JPG";
+import bobo from "@/assets/timeline/bobo.JPG";
 import niver from "@/assets/timeline/niver19.jpg";
-import show from "@/assets/timeline/show.jpg";
+import show from "@/assets/timeline/show.JPG";
 import niver2 from "@/assets/timeline/niver2.jpg";
 import capa from "@/assets/timeline/capa.jpg";
-import cataratas from "@/assets/timeline/cataratas.jpg";
-import hoje from "@/assets/timeline/hoje.jpg";
+import cataratas from "@/assets/timeline/cataratas.JPG";
+import hoje from "@/assets/timeline/hoje.JPG";
 
 const events = [
   { date: "19 · Jun · 2022", 
