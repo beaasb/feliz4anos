@@ -13,7 +13,7 @@ import cataratas from "@/assets/moments/cataratas.jpg";
 import show from "@/assets/moments/show.MP4";
 import buque from "@/assets/moments/buque.JPG";
 import astra from "@/assets/moments/astra.JPG";
-import pipoca from "@/assets/moments/pipoca.MOV";
+import pipoca from "@/assets/moments/pipoca.MP4";
 
 const moments = [
   {
