@@ -10,7 +10,7 @@ import teatro from "@/assets/moments/teatro.JPG";
 import shopping from "@/assets/moments/shopping.MP4";
 import madrinhas from "@/assets/moments/madrinhas.JPG";
 import cataratas from "@/assets/moments/cataratas.jpg";
-import show from "@/assets/moments/show.MOV";
+import show from "@/assets/moments/show.MP4";
 import buque from "@/assets/moments/buque.JPG";
 import astra from "@/assets/moments/astra.JPG";
 import pipoca from "@/assets/moments/pipoca.MOV";
