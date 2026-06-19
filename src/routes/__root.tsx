@@ -83,6 +83,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Para Você ♥" },
       { property: "og:description", content: "Um cantinho só nosso." },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Para Você ♥" },
+      { name: "twitter:description", content: "Um cantinho só nosso." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/627e2ec6-1157-446c-9508-510da08dbdee/id-preview-7126da73--d301f782-01f2-4dbd-8e77-710b97e326b8.lovable.app-1781824731349.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/627e2ec6-1157-446c-9508-510da08dbdee/id-preview-7126da73--d301f782-01f2-4dbd-8e77-710b97e326b8.lovable.app-1781824731349.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
