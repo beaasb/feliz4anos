@@ -8,8 +8,8 @@ type PetalsProps = {
 export function Petals({ darkMode }: PetalsProps) {
   const petals = useMemo(() => {
     const emojis = darkMode
-      ? ["⭐", "✨", "🌙", "💖", "❤️"]
-      : ["🌸", "🌷", "♥", "✿"];
+      ? ["⭐", "✨", "🌙", "💖", "❤️", "♥", "💫", "☄️", "🌟"]
+      : ["🌸", "🌷", "♥", "✿", "🌹", "🌼", "❤️", "🩷"];
 
     return Array.from({ length: 14 }).map((_, i) => ({
       id: i,
