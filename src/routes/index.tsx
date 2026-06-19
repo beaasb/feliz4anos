@@ -12,9 +12,9 @@ import { MemoryGameSection } from "@/components/sections/MemoryGame";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Para Você ♥" },
+      { title: "19 · Jun · 2022" },
       { name: "description", content: "Um cantinho só nosso — feito com muito amor." },
-      { property: "og:title", content: "Para Você ♥" },
+      { property: "og:title", content: "19 · Jun · 2022" },
       { property: "og:description", content: "Um cantinho só nosso — feito com muito amor." },
     ],
   }),
